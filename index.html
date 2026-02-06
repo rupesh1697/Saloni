@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Saloni ✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  overflow-x: hidden;
+  background: radial-gradient(circle at top, #1b1f3b, #000);
+  color: #fff;
+  text-align: center;
+}
+
+/* INTRO */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #2b1055, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeOut 2s ease forwards;
+  animation-delay: 3s;
+}
+
+#intro h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff9a9e; }
+  to { text-shadow: 0 0 30px #fad0c4; }
+}
+
+/* MAIN */
+section {
+  padding: 80px 20px;
+  animation: fadeUp 2s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 25px;
+  padding: 30px;
+  max-width: 700px;
+  margin: 50px auto;
+  box-shadow: 0 0 40px rgba(255,255,255,0.15);
+}
+
+/* TYPEWRITER */
+#typewriter {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+/* CAKE */
+.cake {
+  margin: 50px auto;
+  width: 180px;
+  height: 120px;
+  background: linear-gradient(#ff9a9e, #fad0c4);
+  border-radius: 0 0 20px 20px;
+  position: relative;
+}
+
+.candle {
+  width: 10px;
+  height: 35px;
+  background: white;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flame {
+  width: 14px;
+  height: 20px;
+  background: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: -18px;
+  left: -2px;
+  animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+/* BUTTON */
+button {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 9;
+}
+
+/* PARTICLES */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+.footer {
+  margin: 60px 0;
+  opacity: 0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+  <h1>✨ For Saloni ✨</h1>
+</div>
+
+<audio id="bgMusic" autoplay loop muted>
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()">🎧 Tap for Music</button>
+
+<section>
+  <h2>Happy Birthday Saloni 🎂</h2>
+  <div class="subtitle">A day as special as you are</div>
+
+  <div class="card">
+    <div id="typewriter"></div>
+  </div>
+
+  <div class="cake">
+    <div class="candle">
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Made with ♥ just for you ✨
+  </div>
+</section>
+
+<script>
+/* MUSIC */
+function playMusic(){
+  const m = document.getElementById("bgMusic");
+  m.muted = false;
+  m.play();
+}
+
+/* TYPEWRITER */
+const text = `Dear Saloni,
+
+Some people don’t just exist —
+they light up everything around them.
+
+Your kindness, strength, and warmth
+make the world feel softer and brighter.
+
+May this year bring you peace,
+beautiful surprises,
+and everything your heart deserves 💫
+
+Happy Birthday 🌸`;
+
+let i = 0;
+function type() {
+  if (i < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 40);
+  }
+}
+setTimeout(type, 4000);
+
+/* PARTICLES */
+for (let i = 0; i < 120; i++) {
+  const p = document.createElement("div");
+  p.className = "particle";
+  p.style.left = Math.random()*100 + "vw";
+  p.style.top = Math.random()*100 + "vh";
+  p.style.animationDuration = (Math.random()*5+5)+"s";
+  document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
